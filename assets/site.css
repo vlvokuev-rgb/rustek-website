@@ -442,3 +442,30 @@ footer.foot{border-top:1px solid var(--line);background:var(--bg-2);padding-bloc
   .cm-legend{gap:12px;font-size:10.5px}
   .cm-stats .statnum{font-size:1.6rem}
 }
+
+/* ----- Homepage hero photo background (offshore platform, from rustek.net) ----- */
+.hero--photo{
+  --hero-scrim: linear-gradient(101deg,
+      var(--bg) 0%,
+      var(--bg) 40%,
+      color-mix(in oklab, var(--bg) 60%, transparent) 62%,
+      color-mix(in oklab, var(--bg) 18%, transparent) 82%,
+      transparent 100%);
+  background:
+      var(--hero-scrim),
+      linear-gradient(to bottom, transparent 58%, var(--bg) 100%),
+      url("hero-bg.webp") center right / cover no-repeat;
+  background-color: var(--bg);
+}
+/* tone the grid texture down so it doesn't fight the photo */
+.hero--photo .grid-bg{opacity:.16}
+
+@media(max-width:900px){
+  .hero--photo{
+    --hero-scrim: linear-gradient(176deg,
+        var(--bg) 0%,
+        color-mix(in oklab, var(--bg) 78%, transparent) 46%,
+        color-mix(in oklab, var(--bg) 88%, transparent) 100%);
+    background-position: center 18%;
+  }
+}
