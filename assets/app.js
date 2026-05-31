@@ -6,17 +6,37 @@
 (function(){
   'use strict';
 
-  /* ---------- i18n: swap textContent from data-en / data-ru ---------- */
+  /* ---------- i18n ----------------------------------------------------
+     EN/RU come from data-en / data-ru attributes (as before).
+     ZH/ES/IT/DE come from the window.RT_I18N dictionary (assets/i18n.js),
+     keyed by the English source string, with automatic fallback to English. */
+  var LANGS = ['en','ru','zh','es','it','de'];
+  var LANG_NAME = {en:'English', ru:'Русский', zh:'中文', es:'Español', it:'Italiano', de:'Deutsch'};
+  var I18N = window.RT_I18N || {};
+  function validLang(l){ return LANGS.indexOf(l) > -1 ? l : null; }
+
   var urlLang = new URLSearchParams(window.location.search).get('lang');
-  var LANG = (urlLang === 'ru' || urlLang === 'en') ? urlLang : (localStorage.getItem('rustek-lang') || 'en');
+  var LANG = validLang(urlLang) || validLang(localStorage.getItem('rustek-lang')) || 'en';
+
+  // translate an English source string into the active language (English fallback)
+  function tr(en){
+    if(LANG === 'en' || en == null) return en;
+    var dict = I18N[LANG];
+    return (dict && dict[en] != null) ? dict[en] : en;
+  }
 
   function applyLang(lang){
+    if(!validLang(lang)) lang = 'en';
     LANG = lang;
     localStorage.setItem('rustek-lang', lang);
     document.documentElement.setAttribute('lang', lang);
+    var dict = I18N[lang];
 
     document.querySelectorAll('[data-en]').forEach(function(el){
-      var v = el.getAttribute('data-' + lang);
+      var en = el.getAttribute('data-en'), v;
+      if(lang === 'en')      v = en;
+      else if(lang === 'ru') v = el.getAttribute('data-ru');
+      else                   v = (dict && dict[en] != null) ? dict[en] : en;   // EN fallback
       if(v == null) return;
       // attribute-targeted (placeholder etc): data-i18n-attr="placeholder"
       var attr = el.getAttribute('data-i18n-attr');
@@ -24,16 +44,34 @@
       else { el.textContent = v; }
     });
 
-    // toggle button state
-    document.querySelectorAll('.langtoggle button').forEach(function(b){
-      b.classList.toggle('on', b.dataset.lang === lang);
-    });
     document.dispatchEvent(new CustomEvent('langchange',{detail:{lang:lang}}));
   }
 
   window.RT = window.RT || {};
   window.RT.lang = function(){ return LANG; };
-  window.RT.t = function(en,ru){ return LANG === 'ru' ? ru : en; };
+  window.RT.langs = LANGS.slice();
+  window.RT.langName = function(l){ return LANG_NAME[l] || l; };
+  window.RT.tr = tr;
+  window.RT.t = function(en,ru){ return LANG === 'ru' ? ru : tr(en); };
+
+  /* ---------- language switcher: 6-language dropdown ---------- */
+  function setLangURL(lang){
+    try{ var url = new URL(window.location.href); url.searchParams.set('lang', lang); window.history.replaceState(null,'',url.toString()); }catch(e){}
+  }
+  function initLangSwitcher(){
+    var globe = '<svg class="langsel-globe" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>';
+    var caret = '<svg class="langsel-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+    var opts = LANGS.map(function(l){ return '<option value="'+l+'">'+LANG_NAME[l]+'</option>'; }).join('');
+    document.querySelectorAll('.langtoggle').forEach(function(box){
+      box.innerHTML = globe + '<select class="langsel" aria-label="Language">'+opts+'</select>' + caret;
+      var sel = box.querySelector('select');
+      sel.value = LANG;
+      sel.addEventListener('change', function(){ applyLang(sel.value); setLangURL(sel.value); });
+    });
+    document.addEventListener('langchange', function(e){
+      document.querySelectorAll('.langsel').forEach(function(s){ if(s.value !== e.detail.lang){ s.value = e.detail.lang; } });
+    });
+  }
 
   /* ---------- theme ---------- */
   var THEMES = ['graphite','daylight','swiss'];
@@ -52,15 +90,8 @@
 
   /* ---------- build header / footer shared chrome bindings ---------- */
   function bindChrome(){
-    // lang toggle
-    document.querySelectorAll('.langtoggle button').forEach(function(b){
-      b.addEventListener('click', function(){
-        applyLang(b.dataset.lang);
-        var url = new URL(window.location.href);
-        url.searchParams.set('lang', b.dataset.lang);
-        window.history.replaceState(null, '', url.toString());
-      });
-    });
+    // language switcher (6-language dropdown, replaces the EN/RU pill)
+    initLangSwitcher();
     // theme cycle
     document.querySelectorAll('[data-theme-cycle]').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -181,7 +212,8 @@
     var panel = document.querySelector('[data-region-panel]');
     function render(code){
       var r = REGIONS[code]; if(!r||!panel) return;
-      var d = r[LANG] || r.en;
+      var de = r.en, dr = r.ru || r.en;
+      var d = { name: RT.t(de.name, dr.name), bloc: RT.t(de.bloc, dr.bloc), sys: RT.t(de.sys, dr.sys), body: RT.t(de.body, dr.body) };
       panel.innerHTML =
         '<div class="tag tag--accent" style="margin-bottom:14px">'+code.toUpperCase()+' · '+d.bloc+'</div>'+
         '<h3 class="h2" style="margin-bottom:6px">'+d.name+'</h3>'+
@@ -269,7 +301,7 @@
     function proj(lon,lat){ return [ (lon+180)/360*WD.w, (90-lat)/180*WD.h ]; }
     function el(name,attrs){ var e=document.createElementNS(NS,name); for(var k in attrs){ e.setAttribute(k,attrs[k]); } return e; }
     function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' '); }
-    function nameOf(c){ return LANG==='ru' ? c.ru : c.en; }
+    function nameOf(c){ return RT.t(c.en, c.ru); }
 
     var hub = proj(HUB_LON,HUB_LAT);
     var nMax = CLIENTS.reduce(function(m,c){ return Math.max(m,c.n); },1);
@@ -423,7 +455,7 @@
     function render(key){
       var e = EQUIP[key]; if(!e) return;
       var regs = e.regs.map(function(code){
-        var n = REG_NAMES[code] ? REG_NAMES[code][LANG] : '';
+        var n = REG_NAMES[code] ? RT.t(REG_NAMES[code].en, REG_NAMES[code].ru) : '';
         return '<div class="card card--pad hover" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px">'+
                '<div><div class="mono" style="color:var(--accent);font-size:13px;margin-bottom:3px">'+code+'</div>'+
                '<div style="font-size:14.5px">'+n+'</div></div>'+
@@ -432,10 +464,10 @@
       out.innerHTML =
         '<div class="row" style="justify-content:space-between;margin-bottom:18px">'+
           '<div class="eyebrow eyebrow--plain">'+RT.t('LIKELY ROUTE','ВЕРОЯТНЫЙ МАРШРУТ')+'</div>'+
-          '<div class="tag tag--accent" style="max-width:min(360px,55%);white-space:normal;line-height:1.35;text-align:right;justify-content:flex-end;text-transform:none">'+(typeof e.form==='string'?e.form:e.form[LANG])+'</div>'+
+          '<div class="tag tag--accent" style="max-width:min(360px,55%);white-space:normal;line-height:1.35;text-align:right;justify-content:flex-end;text-transform:none">'+(typeof e.form==='string'?RT.t(e.form,e.form):RT.t(e.form.en,e.form.ru))+'</div>'+
         '</div>'+
         '<div class="grid" style="gap:10px">'+regs+'</div>'+
-        '<p class="faint" style="font-size:13.5px;margin-top:18px;line-height:1.55">'+e.note[LANG]+'</p>'+
+        '<p class="faint" style="font-size:13.5px;margin-top:18px;line-height:1.55">'+RT.t(e.note.en,e.note.ru)+'</p>'+
         '<p class="faint mono" style="font-size:11px;margin-top:10px">'+RT.t('INDICATIVE ONLY — CONFIRMED AT TENDER REVIEW','ОРИЕНТИРОВОЧНО — УТОЧНЯЕТСЯ ПРИ АНАЛИЗЕ ТЕНДЕРА')+'</p>';
       sel.querySelectorAll('[data-eq]').forEach(function(b){ b.classList.toggle('sel', b.dataset.eq===key); });
     }

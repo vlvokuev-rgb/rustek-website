@@ -169,9 +169,20 @@ header.nav{position:sticky;top:0;z-index:60;background:color-mix(in oklab,var(--
 .nav-links a.active::after{content:"";position:absolute;left:13px;right:13px;bottom:1px;height:2px;background:var(--accent)}
 .nav-right{display:flex;align-items:center;gap:12px}
 
-.langtoggle{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-family:var(--font-mono);font-size:12px}
-.langtoggle button{padding:6px 10px;color:var(--text-3);letter-spacing:.06em;transition:all .15s}
-.langtoggle button.on{background:var(--text);color:var(--bg)}
+.langtoggle{position:relative;display:inline-flex;align-items:center;gap:6px;height:34px;
+  padding:0 8px;border:1px solid var(--line);border-radius:var(--r);
+  color:var(--text-2);font-family:var(--font-mono);font-size:12px;
+  transition:border-color .15s,color .15s}
+.langtoggle:hover{border-color:var(--text-3);color:var(--text)}
+.langtoggle:focus-within{border-color:var(--accent);color:var(--text)}
+.langsel-globe{flex:none;opacity:.85}
+.langsel-caret{flex:none;opacity:.7;pointer-events:none}
+.langsel{appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  background:transparent;border:0;outline:none;color:inherit;cursor:pointer;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;line-height:1;padding:6px 0}
+.langsel:focus{outline:none}
+.langsel::-ms-expand{display:none}
+.langsel option{background:var(--surface);color:var(--text);font-family:var(--font-sans)}
 
 .themedot{width:34px;height:34px;border:1px solid var(--line);border-radius:var(--r);display:grid;place-items:center;color:var(--text-2);transition:all .15s}
 .themedot:hover{border-color:var(--text-3);color:var(--text)}
