@@ -208,6 +208,10 @@ header.nav{position:sticky;top:0;z-index:60;background:color-mix(in oklab,var(--
 .card--pad{padding:clamp(22px,2.4vw,32px)}
 .card.hover:hover{border-color:var(--line);transform:translateY(-3px)}
 
+.hero-facts.card{background:transparent;border-color:transparent}
+.hero-facts.ticked::before,.hero-facts.ticked::after{display:none}
+.hero-facts [style*="border-bottom"]{border-bottom-color:transparent!important}
+.hero-facts .btn--ghost{background:transparent;border-color:transparent;padding-left:0;padding-right:0;justify-content:flex-start}
 /* corner-tick decoration */
 .ticked{position:relative}
 .ticked::before,.ticked::after{content:"";position:absolute;width:10px;height:10px;border:1px solid var(--accent);opacity:.7}
