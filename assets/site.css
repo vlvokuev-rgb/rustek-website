@@ -212,6 +212,7 @@ header.nav{position:sticky;top:0;z-index:60;background:color-mix(in oklab,var(--
 .hero-facts.ticked::before,.hero-facts.ticked::after{display:none}
 .hero-facts [style*="border-bottom"]{border-bottom-color:transparent!important}
 .hero-facts .btn--ghost{background:transparent;border-color:transparent;padding-left:0;padding-right:0;justify-content:flex-start}
+.hero-facts .eyebrow,.hero-facts .mono.faint,.hero-facts .btn--ghost{color:color-mix(in oklab,var(--text) 78%,var(--text-3))}
 /* corner-tick decoration */
 .ticked{position:relative}
 .ticked::before,.ticked::after{content:"";position:absolute;width:10px;height:10px;border:1px solid var(--accent);opacity:.7}
