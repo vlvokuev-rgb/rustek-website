@@ -154,7 +154,7 @@ header.nav{position:sticky;top:0;z-index:60;background:color-mix(in oklab,var(--
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:28px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:600;letter-spacing:-0.02em;font-size:20px}
 .brand .mark{width:30px;height:30px;flex:none;position:relative}
-.brand-logo-img{display:block;width:123px;height:34px;min-width:123px;object-fit:contain;flex:none}
+.brand-logo-img{display:block;width:135px;height:37px;min-width:135px;object-fit:contain;flex:none}
 :root[data-theme="daylight"] .brand-logo-img,
 :root[data-theme="swiss"] .brand-logo-img{filter:invert(1)}
 .brand .sub{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.22em;color:var(--text-3);
