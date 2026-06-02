@@ -215,6 +215,7 @@ header.nav{position:sticky;top:0;z-index:60;background:color-mix(in oklab,var(--
 .hero-facts .eyebrow,.hero-facts .mono.faint,.hero-facts .btn--ghost{color:color-mix(in oklab,var(--text) 78%,var(--text-3))}
 .hero-notes .mono.faint{font-size:15.6px;color:color-mix(in oklab,var(--text) 82%,var(--text-3));letter-spacing:.045em}
 .trust-copy{color:color-mix(in oklab,var(--text) 76%,var(--text-3))}
+.problem-eyebrow{color:color-mix(in oklab,var(--text) 78%,var(--text-3))}
 /* corner-tick decoration */
 .ticked{position:relative}
 .ticked::before,.ticked::after{content:"";position:absolute;width:10px;height:10px;border:1px solid var(--accent);opacity:.7}
