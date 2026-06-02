@@ -179,7 +179,7 @@ header.nav{position:sticky;top:0;z-index:60;background:color-mix(in oklab,var(--
 .langsel-caret{flex:none;opacity:.7;pointer-events:none}
 .langsel{appearance:none;-webkit-appearance:none;-moz-appearance:none;
   background:transparent;border:0;outline:none;color:inherit;cursor:pointer;
-  font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;line-height:1;padding:6px 0}
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;line-height:1.6;padding:4px 0}
 .langsel:focus{outline:none}
 .langsel::-ms-expand{display:none}
 .langsel option{background:var(--surface);color:var(--text);font-family:var(--font-sans)}
