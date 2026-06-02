@@ -1,55 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.rustek.net/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/"/>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.rustek.net/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/services.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/services.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/services.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/services.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/services.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/services.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/services.html"/>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.rustek.net/regions.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/regions.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/regions.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/regions.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/regions.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/regions.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/regions.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/regions.html"/>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.rustek.net/process.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/process.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/process.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/process.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/process.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/process.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/process.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/process.html"/>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.rustek.net/cases.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/cases.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/cases.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/cases.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/cases.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/cases.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/cases.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/cases.html"/>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.rustek.net/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/about.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/about.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/about.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/about.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/about.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/about.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/about.html"/>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.rustek.net/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/contact.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/contact.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/contact.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/contact.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/contact.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/contact.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/contact.html"/>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.rustek.net/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/faq.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/faq.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/faq.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/faq.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/faq.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/faq.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/faq.html"/>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://www.rustek.net/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rustek.net/news.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.rustek.net/news.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rustek.net/news.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.rustek.net/news.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.rustek.net/news.html?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.rustek.net/news.html?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rustek.net/news.html"/>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url></urlset>
+  </url>
+</urlset>
