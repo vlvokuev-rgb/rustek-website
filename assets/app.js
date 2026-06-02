@@ -73,6 +73,60 @@
     });
   }
 
+  /* ---------- keyword deep-link router (?q=<free text> / ?topic=<slug>) ----------
+     Maps search-style keywords to the page + section that answers them, navigates
+     there (preserving language, pre-selecting the regulation finder) and highlights it. */
+  var KW_ROUTES = [
+    {slug:'technical-passport', url:'regions.html#technical-passport-kazakhstan',
+     kw:['technical passport','tech passport','project documentation','documentation requirements','formulyar']},
+    {slug:'ex-certification', url:'services.html#regulation-finder', eq:'ex',
+     kw:['ex equipment','explosion proof','ex certification','hazardous area','atex','ex zone']},
+    {slug:'pressure-certification', url:'services.html#regulation-finder', eq:'pressure',
+     kw:['tr cu 032','pressure equipment','pressure vessel','pressure vessels']},
+    {slug:'kazakhstan-documents', url:'regions.html#kazakhstan-documents',
+     kw:['what documents','documents required','documents are required','which documents','required documents']},
+    {slug:'eac-certification', url:'regions.html#eac-certification-kazakhstan',
+     kw:['eac certification','eac certificate','eaeu certification','conformity assessment','certification for imported equipment','imported equipment in kazakhstan','declaration of conformity','tr cu 010','tr cu 012','tr cu 020']},
+    {slug:'kazakhstan-certification', url:'regions.html#kazakhstan-certification-requirements',
+     kw:['kazakhstan certification requirements','certification requirements','kazakhstan certification']}
+  ];
+  function kwNorm(s){ return (' '+String(s)+' ').toLowerCase().replace(/[^a-z0-9Ѐ-ӿ]+/g,' '); }
+  function kwResolve(query){
+    var q=kwNorm(query), best=null, bestLen=0;
+    for(var i=0;i<KW_ROUTES.length;i++){ var r=KW_ROUTES[i];
+      for(var j=0;j<r.kw.length;j++){ var nk=kwNorm(r.kw[j]).trim();
+        if(nk && q.indexOf(' '+nk+' ')>-1 && nk.length>bestLen){ best=r; bestLen=nk.length; } } }
+    return best;
+  }
+  function kwTarget(r){
+    var lang=RT.lang(), parts=r.url.split('#'), path=parts[0], hash=parts[1]||'', qp=[];
+    if(lang && lang!=='en') qp.push('lang='+lang);
+    if(r.eq) qp.push('eq='+r.eq);
+    return path + (qp.length?('?'+qp.join('&')):'') + (hash?('#'+hash):'');
+  }
+  function kwFlash(el){ if(!el) return; el.classList.remove('kw-flash'); void el.offsetWidth;
+    el.classList.add('kw-flash'); setTimeout(function(){ el.classList.remove('kw-flash'); }, 2600); }
+  function kwScrollFlash(hash){
+    if(!hash) return; var el=document.getElementById(hash); if(!el) return;
+    el.classList.add('in');                                   // force-reveal target + its children
+    el.querySelectorAll('.reveal').forEach(function(n){ n.classList.add('in'); });
+    setTimeout(function(){
+      try{ el.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){ el.scrollIntoView(); }
+      kwFlash(el);
+    }, 90);
+  }
+  function initKeywordRouter(){
+    var p=new URLSearchParams(location.search), topic=p.get('topic'), q=p.get('q'), r=null;
+    if(topic){ for(var i=0;i<KW_ROUTES.length;i++){ if(KW_ROUTES[i].slug===topic){ r=KW_ROUTES[i]; break; } } }
+    if(!r && q){ r=kwResolve(q); }
+    if(!r){ kwScrollFlash((location.hash||'').replace('#','')); return; }  // no match: still honour a plain #hash
+    var target=kwTarget(r), targetPath=target.split('?')[0].split('#')[0];
+    var here=(location.pathname.split('/').pop()||'index.html');
+    if(targetPath && targetPath!==here){ location.replace(target); return; }
+    history.replaceState(null,'',target);                     // strip ?q/?topic, keep #hash + lang/eq
+    kwScrollFlash(r.url.split('#')[1]);
+  }
+
   /* ---------- theme ---------- */
   var THEMES = ['graphite','daylight','swiss'];
   var THEME_LABEL = {graphite:'Graphite', daylight:'Daylight', swiss:'Swiss Red'};
@@ -477,7 +531,8 @@
     document.addEventListener('langchange', function(){
       var s = sel.querySelector('[data-eq].sel'); if(s) render(s.dataset.eq);
     });
-    render('pressure');
+    var startEq = new URLSearchParams(location.search).get('eq');
+    render(EQUIP[startEq] ? startEq : 'pressure');
   }
 
   /* ---------- contact form ---------- */
@@ -504,5 +559,6 @@
     initClientMap();
     initSelector();
     initForm();
+    initKeywordRouter();
   });
 })();

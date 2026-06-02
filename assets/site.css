@@ -489,3 +489,14 @@ footer.foot{border-top:1px solid var(--line);background:var(--bg-2);padding-bloc
     background-position: center 18%;
   }
 }
+
+/* ----- Keyword deep-link landings (?q= / ?topic=) ----- */
+#kazakhstan-certification-requirements,#eac-certification-kazakhstan,
+#technical-passport-kazakhstan,#kazakhstan-documents,#regulation-finder{scroll-margin-top:92px}
+.kw-flash{animation:kwFlash 2.6s var(--ease)}
+@keyframes kwFlash{
+  0%,100%{box-shadow:0 0 0 0 transparent}
+  12%{box-shadow:0 0 0 3px var(--accent),0 0 18px 4px color-mix(in oklab,var(--accent) 28%,transparent)}
+  70%{box-shadow:0 0 0 2px color-mix(in oklab,var(--accent) 45%,transparent)}
+}
+@media (prefers-reduced-motion:reduce){ .kw-flash{animation:none;box-shadow:0 0 0 2px var(--accent)} }
