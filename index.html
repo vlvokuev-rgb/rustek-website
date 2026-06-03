@@ -459,9 +459,19 @@
         <p class="lead" style="margin-top:16px" data-en="A practical PDF brochure: regulations by equipment type, declaration vs certificate, technical passports, and the documentation checklist we use on real projects." data-ru="Практичный PDF на 18 страниц: регламенты по типам оборудования, декларация против сертификата, технические паспорта и чек-лист документации, который мы используем в реальных проектах.">A practical PDF brochure: regulations by equipment type, declaration vs certificate, technical passports, and the documentation checklist we use on real projects.</p>
       </div>
       <form class="flow" data-contact-form style="position:relative">
+        <div class="grid g-2" style="gap:12px;margin-bottom:12px">
+          <div class="field">
+            <label data-en="Full name" data-ru="Имя и фамилия">Full name</label>
+            <input type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label data-en="Company" data-ru="Компания">Company</label>
+            <input type="text" required autocomplete="organization">
+          </div>
+        </div>
         <div class="field" style="margin-bottom:12px">
           <label data-en="Work email" data-ru="Рабочий e-mail">Work email</label>
-          <input type="email" required placeholder="name@company.com" data-en="name@company.com" data-ru="name@company.com" data-i18n-attr="placeholder">
+          <input type="email" required autocomplete="email" placeholder="name@company.com" data-en="name@company.com" data-ru="name@company.com" data-i18n-attr="placeholder">
         </div>
         <button class="btn btn--primary btn--block btn--lg" type="submit"><span data-en="Send me the guide" data-ru="Прислать гайд">Send me the guide</span><span class="ar">→</span></button>
         <p class="faint mono" style="font-size:11px;text-align:center" data-en="NO SPAM · UNSUBSCRIBE ANYTIME" data-ru="БЕЗ СПАМА · ОТПИСКА В ЛЮБОЙ МОМЕНТ">NO SPAM · UNSUBSCRIBE ANYTIME</p>
