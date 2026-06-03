@@ -256,8 +256,8 @@
         ru:{name:'Узбекистан',bloc:'Центральная Азия',sys:'Нац. схема (O\u2018zDSt)',body:'Вне ЕАЭС — действует национальная схема сертификации. Консультируем по корректным национальным документам и маршруту соответствия для каждого типа оборудования.'}},
     tm:{en:{name:'Turkmenistan',bloc:'Central Asia',sys:'National scheme',body:'National certification scheme with project-specific requirements. We help define applicable documents at bid stage.'},
         ru:{name:'Туркменистан',bloc:'Центральная Азия',sys:'Нац. схема',body:'Национальная схема сертификации с требованиями под конкретный проект. Помогаем определить применимые документы на этапе тендера.'}},
-    tj:{en:{name:'Tajikistan',bloc:'Central Asia',sys:'National scheme',body:'National conformity scheme. Documentation and translation support coordinated with local bodies.'},
-        ru:{name:'Таджикистан',bloc:'Центральная Азия',sys:'Нац. схема',body:'Национальная схема соответствия. Документация и переводы координируются с местными органами.'}}
+    tj:{en:{name:'Tajikistan',bloc:'Central Asia',sys:'National scheme',body:'National conformity scheme, where certification is normally arranged by the importer or end user. We support suppliers with technical documentation, Russian translation and preparation of technical passports where required.'},
+        ru:{name:'Таджикистан',bloc:'Центральная Азия',sys:'Нац. схема',body:'Национальная схема соответствия, где сертификация обычно оформляется импортёром или конечным пользователем. Мы поддерживаем поставщиков технической документацией, переводом на русский язык и подготовкой технических паспортов, когда это требуется.'}}
   };
 
   function initRegionMap(){
