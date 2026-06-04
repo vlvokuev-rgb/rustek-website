@@ -540,29 +540,13 @@
     document.querySelectorAll('[data-contact-form]').forEach(function(f){
       f.addEventListener('submit', function(ev){
         ev.preventDefault();
-        if(f.hasAttribute('data-guide-form')){
-          var fullName = (f.querySelector('[name="fullName"]') || {}).value || '';
-          var company = (f.querySelector('[name="company"]') || {}).value || '';
-          var email = (f.querySelector('[name="email"]') || {}).value || '';
-          var to = f.getAttribute('data-mailto') || 'info@rustek.net';
-          var subject = 'Certification guide request';
-          var body = [
-            'Certification guide request',
-            '',
-            'Full name: ' + fullName,
-            'Company: ' + company,
-            'Work email: ' + email,
-            '',
-            'Source: rustek.net website'
-          ].join('\n');
-          window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-        }
         var ok = f.querySelector('[data-form-ok]');
         f.querySelectorAll('input,select,textarea,button').forEach(function(el){ el.disabled=true; });
         if(ok){ ok.style.display='flex'; requestAnimationFrame(function(){ ok.style.opacity=1; }); }
       });
     });
   }
+
   /* ---------- init ---------- */
   document.addEventListener('DOMContentLoaded', function(){
     initTheme();
