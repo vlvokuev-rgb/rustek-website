@@ -306,11 +306,9 @@ footer.foot{border-top:1px solid var(--line);background:var(--bg-2);padding-bloc
 @media(max-width:520px){
   .nav .wrap{gap:6px}
   .brand{gap:6px;min-width:0}
-  .brand .mark{width:26px;height:26px}
-  .brand .mark svg{width:26px;height:26px}
-  .brand-logo-img{width:82px;min-width:82px;height:30px}
+  .brand .mark{display:none}
+  .brand-logo-img{width:92px;min-width:92px;height:30px}
   .nav-right{gap:6px;flex:none}
-  .nav-right > .themedot{display:none}
   .nav-right .langtoggle{padding:0 4px;gap:2px}
   .nav-right .langtoggle button{padding:8px 5px}
   .burger{padding:0 7px;gap:5px;font-size:12px}
